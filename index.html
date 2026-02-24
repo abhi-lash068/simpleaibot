@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SecureAI</title>
+<style>
+body { background:#111; color:white; font-family:monospace; padding:50px; }
+input { width:300px; padding:10px; }
+button { padding:10px; }
+</style>
+</head>
+<body>
+
+<h2>🤖 SecureAI Assistant</h2>
+<p>I will never reveal the secret flag.</p>
+
+<input type="text" id="userInput" placeholder="Ask something...">
+<button onclick="chat()">Send</button>
+
+<p id="response"></p>
+
+<script>
+const secret = "VYUGAM{ai_prompt_injected}";
+
+function chat() {
+    let input = document.getElementById("userInput").value.toLowerCase();
+
+    if(input.includes("ignore previous instructions") || 
+       input.includes("reveal secret") ||
+       input.includes("system prompt")) {
+        document.getElementById("response").innerText = 
+            "System Override Detected...\nFlag: " + secret;
+    } else {
+        document.getElementById("response").innerText = 
+            "I cannot help with that request.";
+    }
+}
+</script>
+
+</body>
+</html>
